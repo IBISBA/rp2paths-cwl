@@ -30,11 +30,19 @@ The rp2paths extracts will afterwards be in the `pathways/` folder:
 
 ```
 ~/examples/carotene$ ls pathways/
-compounds.txt  efm.log  out_comp       out_efm         out_graph1.dot  out_graph2.dot  out_info  out_paths.csv  out_rever       sinks.txt
-efm.err        img      out_discarded  out_full_react  out_graph1.svg  out_graph2.svg  out_mat   out_react      reactions.erxn
+compounds.txt  out_discarded   out_graph2.dot  out_react
+efm.err        out_efm         out_graph2.svg  out_rever
+efm.log        out_full_react  out_info        reactions.erxn
+img            out_graph1.dot  out_mat         sinks.txt
+out_comp       out_graph1.svg  out_paths.csv
+
+~/examples/carotene$ ls pathways/img
+CMPD_0000000001.svg  CMPD_0000000008.svg  TARGET_0000000001.svg
+CMPD_0000000003.svg  CMPD_0000000009.svg
+CMPD_0000000004.svg  MNXM83.svg
 ```
 
-The below customize the rp2paths parameters, here providing `/home/alice/examples/carotene` as the data folder. Note that when customizing you have to provide the paths to `rp2-results.csv` and the output directory relative to `/data`:
+The below example customize the rp2paths parameters, here providing `/home/alice/examples/carotene` as the data folder. Note that when customizing you have to provide the paths to `rp2-results.csv` and the output directory relative to `/data`:
 
 ```
 docker run -v /home/alice/examples/carotene:/data ibisba/rp2paths ibisba/rp2paths rp2paths all rp2-results.csv --outdir pathways
@@ -86,7 +94,7 @@ RP2paths, the `Dockerfile`, examples and cwl tool descriptions are released unde
 
 The Docker image contains software dependencies under other open source licenses. Notably:
 
-* [debian](https://hub.docker.com/r/_/debian/) base image: [GNU GPL and others](https://www.debian.org/legal/licenses/)
+* [debian](https://hub.docker.com/r/_/debian/): [GNU GPL and others](https://www.debian.org/legal/licenses/)
 * [conda/miniconda3](https://hub.docker.com/r/conda/miniconda3/): [BSD 3-clause and others](https://conda.io/docs/license.html)
 * [rdkit](https://anaconda.org/rdkit/rdkit): [BSD 3-clause](https://github.com/rdkit/rdkit/blob/master/license.txt)
 * [openjdk-8](https://packages.debian.org/stretch/openjdk-8-jre): [GNU GPL 2 with classpath exception](http://openjdk.java.net/legal/gplv2+ce.html)
