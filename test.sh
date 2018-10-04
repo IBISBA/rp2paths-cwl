@@ -6,9 +6,11 @@ EXPECTED_FILES="compounds.txt efm.err efm.log out_comp out_discarded out_efm out
 for ex in examples/*; do
   pushd $ex
     echo "Testing rp2paths all $ex/rp2-results.csv"
-    docker run -v `pwd`:/data ibisba/rp2paths
+    # Ensure always new output directory
+    out=`mktemp -d`
+    docker run -v `pwd`:/data:ro -v $out:/data/pathways ibisba/rp2paths
     for f in $EXPECTED_FILES; do
-        test -f pathways/$f || ( echo "Can't find $f " >&2 ; false )
+        test -f $out/$f || ( echo "Can't find $f " >&2 ; false )
         # TODO: Check file is non-empty
     done
     # TODO: Check img/* exists
@@ -21,5 +23,5 @@ for i in $(find tools workflows -name "*.cwl"); do
 done
 for j in $(find workflows -name "*.-job.yaml"); do
  echo "Running workflow job: ${j}"
- cwltool --verbose --default-container debian --outdir `mktemp` ${j}
+ cwltool --verbose --default-container debian --outdir `mktemp -d` ${j}
 done
