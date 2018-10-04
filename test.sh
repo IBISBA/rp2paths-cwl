@@ -8,7 +8,7 @@ for ex in examples/*; do
     echo "Testing rp2paths all $ex/rp2-results.csv"
     # Ensure always new output directory
     out=`mktemp -d`
-    docker run -v `pwd`:/data:ro -v $out:/data/pathways ibisba/rp2paths
+    docker run -v `pwd`:/data -v $out:/data/pathways ibisba/rp2paths
     for f in $EXPECTED_FILES; do
         test -f $out/$f || ( echo "Can't find $f " >&2 ; false )
         # TODO: Check file is non-empty
