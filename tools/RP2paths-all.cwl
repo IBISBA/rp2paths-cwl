@@ -84,9 +84,8 @@ inputs:
 
   onlyPathsStartingBy:
     type:
-    - "null"
     - type: array
-      items: array
+      items: string
 
     doc: List of compounds IDs to consider. If specified, only paths making use of at least one of these compounds as initial substrate (first step of a pathway) are kept.
     inputBinding:
@@ -94,9 +93,8 @@ inputs:
 
   notPathsStartingBy:
     type:
-    - "null"
     - type: array
-      items: array
+      items: string
 
     doc: List of compounds IDs. If specifed, paths making use of one of these compounds as unique initial substrate will be filtered out
     inputBinding:

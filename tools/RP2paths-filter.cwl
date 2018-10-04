@@ -14,23 +14,22 @@ doc: |
 inputs:
   
   outdir:
-    type: ["null", string]
+    type: string
     default: /home/stain/src/rp2paths/
     doc: Folder to put all results
     inputBinding:
       prefix: --outdir 
 
   customsinkfile:
-    type: ["null", string]
+    type: string
     doc: User-defined sink file, i.e. file listing compounds to consider as sink compounds. Sink compounds should be provided by their IDs, as used in the reaction.erxn file. If no file is provided then the sink file generated during the "convert" task is used (default behavior). If a file is provided then **only** comppounds listed in this file will be used.
     inputBinding:
       prefix: --customsinkfile 
 
   onlyPathsStartingBy:
     type:
-    - "null"
     - type: array
-      items: array
+      items: string
 
     doc: List of compounds IDs to consider. If specified, only paths making use of at least one of these compounds as initial substrate (first step of a pathway) are kept.
     inputBinding:
@@ -38,9 +37,8 @@ inputs:
 
   notPathsStartingBy:
     type:
-    - "null"
     - type: array
-      items: array
+      items: string
 
     doc: List of compounds IDs. If specifed, paths making use of one of these compounds as unique initial substrate will be filtered out
     inputBinding:
