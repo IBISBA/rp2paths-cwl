@@ -1,9 +1,9 @@
 FROM conda/miniconda3
 
 ENV RP2PATHS_VERSION 1.0.0
-ENV RP2PATHS_URL https://github.com/brsynth/rp2paths/archive/${VERSION}.zip
+ENV RP2PATHS_URL https://github.com/brsynth/rp2paths/archive/${RP2PATHS_VERSION}.zip
 # Update sha256 sum for each release
-ENV RP2PATHS_SHA256 0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5
+ENV RP2PATHS_SHA256 f40e9f0de615e8df1428a09ca66986c055608d5f0e8805f4de650591a18910c3
 
 # Debian Security patches
 RUN apt-get update && apt-get -y dist-upgrade 
@@ -21,7 +21,7 @@ WORKDIR /tmp
 # Download and "install" rp2paths, even though it has no setup.py
 RUN echo "$RP2PATHS_SHA256  rp2paths.zip" > rp2paths.zip.sha256
 RUN cat rp2paths.zip.sha256
-RUN curl -q -o rp2paths.zip $RP2PATHS_URL && sha256sum rp2paths.zip && sha256sum -c rp2paths.zip.sha256
+RUN curl -L -o rp2paths.zip $RP2PATHS_URL && sha256sum rp2paths.zip && sha256sum -c rp2paths.zip.sha256
 RUN mkdir src && cd src && unzip ../rp2paths.zip && mv * ../
 RUN mv src /opt/rp2paths
 # Patch in #!/ shebang if missing
