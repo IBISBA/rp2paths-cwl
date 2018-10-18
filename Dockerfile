@@ -11,24 +11,24 @@ ENV RP2PATHS_SHA256 5990e10e87b6d2f1966e23d14ec2138bb13c0df18ed721cc4e50d2434f7c
 # which this Docker image does not have.
 # We'll sacrifize space for a duplicate install to get all the dependencies
 # Tip: openjdk-8-jre needed to launch efm
-RUN apt-get update && \
+RUN apt-get --quiet update && \
     # debian security updates as conda/miniconda3:latest is seldom updated
-    apt-get -y dist-upgrade && \
-    apt-get -y install \
+    apt-get --quiet --yes dist-upgrade && \
+    apt-get --quiet --yes install \
         curl \
         graphviz \
         openjdk-8-jre
 
 ## Install rest of dependencies as Conda packages
 # Update conda base install in case base Docker image is outdated
-RUN conda update --yes conda && conda update --all --yes
+RUN conda update --quiet --yes conda && conda update --all --yes
 
 # Install rdkit first as it has loads of dependencies
 # Check for new versions at
 # https://anaconda.org/rdkit/rdkit/labels
-RUN conda install --yes --channel rdkit rdkit=2018.03.4.0
+RUN conda install --quiet --yes --channel rdkit rdkit=2018.03.4.0
 # TODO: are any of these already included from rdkit above?
-RUN conda install --yes python-graphviz pydotplus lxml 
+RUN conda install --quiet --yes python-graphviz pydotplus lxml 
 # FIXME: Is it pip's image or conda's scikit-image?
 #RUN pip install -y image
 #conda install scikit-image
