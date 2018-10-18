@@ -15,10 +15,10 @@ RUN apt-get update && \
     # debian security updates as conda/miniconda3:latest is seldom updated
     apt-get -y dist-upgrade && \
     apt-get -y install \
-        curl  \
+        curl \
         graphviz \
         openjdk-8-jre
-        
+
 ## Install rest of dependencies as Conda packages
 # Update conda base install in case base Docker image is outdated
 RUN conda update --yes conda && conda update --all --yes
@@ -32,7 +32,6 @@ RUN conda install --yes python-graphviz pydotplus lxml
 # FIXME: Is it pip's image or conda's scikit-image?
 #RUN pip install -y image
 #conda install scikit-image
-##
 
 
 # Download and "install" rp2paths release
