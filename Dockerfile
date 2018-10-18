@@ -2,10 +2,10 @@ FROM conda/miniconda3
 
 # Check for new versions from 
 # https://github.com/brsynth/rp2paths/releases
-ENV RP2PATHS_VERSION 1.0.1
+ENV RP2PATHS_VERSION 1.0.2
 ENV RP2PATHS_URL https://github.com/brsynth/rp2paths/archive/v${RP2PATHS_VERSION}.tar.gz
-# Update sha256 sum for each release
-ENV RP2PATHS_SHA256 5990e10e87b6d2f1966e23d14ec2138bb13c0df18ed721cc4e50d2434f7cab0f
+# NOTE: Update sha256sum for each release
+ENV RP2PATHS_SHA256 3813460dea8bb02df48e1f1dfb60751983297520f09cdfcc62aceda316400e66
 
 # Although graphviz is also in conda, it depends on X11 libraries in /usr/lib
 # which this Docker image does not have.
