@@ -1,5 +1,8 @@
+FROM scratch as cwl
+COPY /tools /usr/share/cwl/rp2paths 
+LABEL org.w3id.cwl.tool /usr/share/cwl/rp2paths/rp2paths.cwl
+ 
 FROM conda/miniconda3
-
 # Check for new versions from 
 # https://github.com/brsynth/rp2paths/releases
 ENV RP2PATHS_VERSION 1.0.2
@@ -51,6 +54,9 @@ RUN ln -s /opt/rp2paths/RP2paths.py /usr/local/bin/rp2paths
 RUN rp2paths --help
 # Verify full execution (Note: We're NOT in /opt/rp2paths folder)
 RUN rp2paths all /opt/rp2paths/examples/violacein/rp2-results.csv --outdir /tmp/1 && ls /tmp/1 && rm -rf /tmp/1
+
+COPY --from=cwl /usr/share/cwl/rp2paths /usr/share/cwl/rp2paths
+LABEL org.w3id.cwl.tool /usr/share/cwl/rp2paths/rp2paths.cwl
 
 # Default command is to run on /data/rp2-results.csv
 # and output to /data/pathways/
