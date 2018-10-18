@@ -42,7 +42,7 @@ WORKDIR /tmp
 RUN echo "$RP2PATHS_SHA256  rp2paths.tar.gz" > rp2paths.tar.gz.sha256
 RUN cat rp2paths.tar.gz.sha256
 RUN echo Downloading $RP2PATHS_URL
-RUN curl -v -L -o rp2paths.tar.gz $RP2PATHS_URL && sha256sum rp2paths.tar.gz && sha256sum -c rp2paths.tar.gz.sha256
+RUN curl -q -L -o rp2paths.tar.gz $RP2PATHS_URL && sha256sum rp2paths.tar.gz && sha256sum -c rp2paths.tar.gz.sha256
 RUN mkdir src && cd src && tar xfv ../rp2paths.tar.gz && mv */* ./
 RUN mv src /opt/rp2paths
 # Patch in #!/ shebang if missing
