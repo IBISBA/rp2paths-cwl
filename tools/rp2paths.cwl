@@ -43,7 +43,7 @@ inputs:
       prefix: --reverse
 
   minDepth:
-    type: boolean
+    type: boolean?
     default: False
     doc: >
       Use minimal depth scope, i.e. stop the scope computation as as soon an a first 
