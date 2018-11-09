@@ -155,7 +155,7 @@ outputs:
     reactions:
       type: File
       outputBinding:
-        glob: reactions.txt
+        glob: reactions.erxn
       doc: >
         A list of reactions 
         # which format?
