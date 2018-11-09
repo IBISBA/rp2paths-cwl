@@ -52,7 +52,7 @@ inputs:
       prefix: --minDepth 
 
   customsinkfile:
-    type: ["null", File]
+    type: File?
     doc: >
       User-defined sink file, i.e. file listing compounds to consider as sink compounds. 
       Sink compounds should be provided by their IDs, as used in the reaction.erxn file. 
@@ -63,46 +63,41 @@ inputs:
       prefix: --customsinkfile 
 
   ebin:
-    type: ["null", File]
-    default: /home/stain/src/rp2paths/efmtool/launch_efm.sh
+    type: File?
     doc: Binary that enumerate the EFMs
     inputBinding:
       prefix: --ebin 
 
   timeout:
-    type: ["null", int]
+    type: int?
     default: 900
     doc: Timeout before killing a process (in s)
     inputBinding:
       prefix: --timeout 
 
   maxsteps:
-    type: ["null", int]
+    type: int?
     default: 10
     doc: cutoff on the maximum number of steps in a pathways
     inputBinding:
       prefix: --maxsteps 
 
   maxpaths:
-    type: ["null", int]
+    type: int?
     default: 150
     doc: cutoff on the maximum number of pathways
     inputBinding:
       prefix: --maxpaths 
 
   unfold_compounds:
-    type: ["null", boolean]
+    type: boolean?
     default: False
     doc: Unfold pathways based on equivalencie of compounds (can lead to combinatorial explosion).
     inputBinding:
       prefix: --unfold_compounds 
 
   onlyPathsStartingBy:
-    type:
-    - "null"
-    - type: array
-      items: string
-
+    type: string[]?
     doc: >
       List of compounds IDs to consider. If specified, only paths making use of 
       at least one of these compounds as initial substrate (first step of a
@@ -111,11 +106,7 @@ inputs:
       prefix: --onlyPathsStartingBy 
 
   notPathsStartingBy:
-    type:
-    - "null"
-    - type: array
-      items: string
-
+    type: string[]?
     doc: >
       List of compounds IDs. If specifed, paths making use of 
       one of these compounds as unique initial substrate will 
@@ -124,13 +115,13 @@ inputs:
       prefix: --notPathsStartingBy 
 
   cmpdnamefile:
-    type: ["null", File]
+    type: File?
     doc: File with name of compounds.
     inputBinding:
       prefix: --cmpdnamefile 
 
   target:
-    type: ["null", string]
+    type: string?
     doc: >
       Target compound internal ID. This internal ID specifies which compound 
       should be considered as the targeted compound. The default behavior is 
