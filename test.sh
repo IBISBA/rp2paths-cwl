@@ -21,7 +21,7 @@ for i in $(find tools workflows -name "*.cwl"); do
  echo "Validating workflow: ${i}"
  cwltool --validate ${i}
 done
-for j in $(find workflows -name "*.-job.yaml"); do
+for j in $(find workflows -name "*.-job.yml"); do
  echo "Running workflow job: ${j}"
  cwltool --verbose --default-container debian --outdir `mktemp -d` ${j}
 done
