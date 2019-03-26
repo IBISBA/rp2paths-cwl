@@ -37,7 +37,7 @@ inputs:
   # TODO: Why is this boolean inverted? Rename to "no-reverse"?
   reverse:
     type: boolean
-    #default: True
+    default: False
     doc: Consider reactions in the reverse direction
     inputBinding:
       prefix: --reverse

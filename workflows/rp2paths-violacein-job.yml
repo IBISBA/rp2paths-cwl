@@ -1,0 +1,11 @@
+#!/usr/bin/env cwl-runner
+#
+cwl:tool: ../tools/rp2paths.cwl
+
+reverse: False
+
+infile:
+  class: File
+  path: ../examples/carotene/rp2-results.csv
+
+
