@@ -6,6 +6,6 @@ reverse: False
 
 infile:
   class: File
-  path: ../examples/violacein/rp2-results.csv
+  path: ../examples/naringenin/rp2-results.csv
 
 
